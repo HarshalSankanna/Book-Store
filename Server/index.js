@@ -13,10 +13,8 @@ app.get("/", (request, response) => {
   return response.status(234).send("Welcome");
 });
 
-console.log("MongoURI:", mongoURI);
-
 mongoose
-  .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(mongoURI)
   .then(() => {
     console.log("Server connected to database");
     app.listen(port, () => {
