@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import bookRouter from "./routes/bookRoute.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -8,10 +9,15 @@ const mongoURI = process.env.MONGO_URI;
 
 const app = express();
 
+//middleware for parsing request body
+app.use(express.json());
+
 app.get("/", (request, response) => {
   console.log(request);
   return response.status(234).send("Welcome");
 });
+
+app.use(bookRouter);
 
 mongoose
   .connect(mongoURI)
