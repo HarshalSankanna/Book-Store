@@ -17,7 +17,7 @@ app.get("/", (request, response) => {
   return response.status(234).send("Welcome");
 });
 
-app.use(bookRouter);
+app.use("/books", bookRouter);
 
 mongoose
   .connect(mongoURI)
